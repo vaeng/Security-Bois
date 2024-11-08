@@ -20,6 +20,11 @@ public class PlayerController : MonoBehaviour
         transform.Translate(Vector3.right * horizontalInput * Time.deltaTime * speed, Space.World);
         transform.Translate(Vector3.forward * verticalInput * Time.deltaTime * speed, Space.World);
 
+        // turn the player to the direction of movement, calculate the angle of the movement from horizontal and vertical input
+        float angle = Mathf.Atan2(horizontalInput, verticalInput) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0, angle, 0);
+
+
         // if the player presses the space key or the joystick button 1 or the control key on the keyboard,
         // the player will shout and push the guests away
         if (Input.GetKeyDown(KeyCode.Joystick1Button0) || Input.GetKeyDown(KeyCode.LeftControl))
