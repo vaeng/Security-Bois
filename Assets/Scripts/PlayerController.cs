@@ -3,7 +3,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float speed = 10.0f;
-    public float pushForce = 2000.0f;
+    public float pushForce = 3000.0f;
     public float shoutRadius = 5.0f;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour
 
         // if the player presses the space key or the joystick button 1 or the control key on the keyboard,
         // the player will shout and push the guests away
-        if (Input.GetKeyDown(KeyCode.Joystick1Button1) || Input.GetKeyDown(KeyCode.LeftControl))
+        if (Input.GetKeyDown(KeyCode.Joystick1Button0) || Input.GetKeyDown(KeyCode.LeftControl))
         {
             GameObject[] guests = GameObject.FindGameObjectsWithTag("Guest");
             foreach (GameObject guest in guests)
