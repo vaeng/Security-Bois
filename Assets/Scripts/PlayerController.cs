@@ -1,0 +1,55 @@
+using UnityEngine;
+
+public class PlayerController : MonoBehaviour
+{
+    public float speed = 10.0f;
+    public float pushForce = 3000.0f;
+    public float shoutRadius = 5.0f;
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        // Move the player left and right
+        float horizontalInput = Input.GetAxis("Horizontal");
+        float verticalInput = Input.GetAxis("Vertical");
+        transform.Translate(Vector3.right * horizontalInput * Time.deltaTime * speed, Space.World);
+        transform.Translate(Vector3.forward * verticalInput * Time.deltaTime * speed, Space.World);
+
+        // if the player presses the space key or the joystick button 1 or the control key on the keyboard,
+        // the player will shout and push the guests away
+        if (Input.GetKeyDown(KeyCode.Joystick1Button0) || Input.GetKeyDown(KeyCode.LeftControl))
+        {
+            GameObject[] guests = GameObject.FindGameObjectsWithTag("Guest");
+            foreach (GameObject guest in guests)
+            {
+                // if the guest is within the shout radius, push the guest away,
+                // towards the gameobject with the tag exit
+                if (Vector3.Distance(transform.position, guest.transform.position) < shoutRadius)
+                {
+                    GameObject exit = GameObject.FindGameObjectWithTag("Exit");
+                    Vector3 directionToExit = exit.transform.position - guest.transform.position;
+                    guest.GetComponent<Rigidbody>().AddForce(directionToExit.normalized * pushForce);
+                }
+                
+            }
+        }
+    }
+
+    // if a gameobject with tag "Guest" collides with the player,
+    // push the guest to the gameobject with the tag exit
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Guest"))
+        {
+            GameObject exit = GameObject.FindGameObjectWithTag("Exit");
+            // apply force to the guest and push it to the exit
+            Vector3 directionToExit = exit.transform.position - collision.gameObject.transform.position;
+            collision.gameObject.GetComponent<Rigidbody>().AddForce(directionToExit.normalized * 1000);
+        }
+    }
+}
