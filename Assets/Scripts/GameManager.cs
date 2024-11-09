@@ -23,7 +23,10 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Joystick1Button1))
         {
+            // deactivate the current player's PlayerController Script
             players[activePlayerIndex].GetComponent<PlayerController>().enabled = false;
+            // set them to idle
+            players[activePlayerIndex].GetComponent<Animator>().SetBool("walk_b", false);
             activePlayerIndex++;
             if (activePlayerIndex >= players.Length)
             {

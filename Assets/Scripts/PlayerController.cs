@@ -3,7 +3,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float speed = 10.0f;
-    public float pushForce = 4000.0f;
+    public float pushForce = 1000.0f;
     public float shoutRadius = 5.0f;
     private Animator animator;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -66,7 +66,7 @@ public class PlayerController : MonoBehaviour
             GameObject exit = GameObject.FindGameObjectWithTag("Exit");
             // apply force to the guest and push it to the exit
             Vector3 directionToExit = exit.transform.position - collision.gameObject.transform.position;
-            collision.gameObject.GetComponent<Rigidbody>().AddForce(directionToExit.normalized * 1000);
+            collision.gameObject.GetComponent<Rigidbody>().AddForce(directionToExit.normalized * pushForce);
         }
     }
 }
