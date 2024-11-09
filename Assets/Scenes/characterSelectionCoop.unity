@@ -119,6 +119,57 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &108381619
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 108381621}
+  - component: {fileID: 108381620}
+  m_Layer: 0
+  m_Name: CharacterSelectionManager 2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &108381620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 108381619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cce17f342a9a7549b53930c1fb3a194, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterRenderer: {fileID: 776245066}
+  characterMaterials:
+  - {fileID: 2100000, guid: 473d8bb7f181e1846a7ee9e073970eca, type: 2}
+  - {fileID: 2100000, guid: 8848766434923ad4781c03023fbe28c6, type: 2}
+  - {fileID: 2100000, guid: d4994d56dbc85f7479a657a322f87906, type: 2}
+  - {fileID: 2100000, guid: 9dd373132ba6d0b4589c052be00b846c, type: 2}
+  currentMaterialIndex: 0
+--- !u!4 &108381621
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 108381619}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 552.72394, y: 252.47601, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &321500844
 GameObject:
   m_ObjectHideFlags: 0
@@ -514,7 +565,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1091810233}
+      - m_Target: {fileID: 108381620}
         m_TargetAssemblyTypeName: CharacterSelectionManager, Assembly-CSharp
         m_MethodName: NextCharacter
         m_Mode: 1
@@ -628,9 +679,13 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -558093898605547249, guid: 4d10d5095c0989f40a94979da665b465, type: 3}
+      propertyPath: m_Name
+      value: SecurityBoi2
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4d10d5095c0989f40a94979da665b465, type: 3}
       propertyPath: m_Name
-      value: SecurityBoi
+      value: SecurityBoi 2
       objectReference: {fileID: 0}
     - target: {fileID: 5745579600081312517, guid: 4d10d5095c0989f40a94979da665b465, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -671,6 +726,11 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!137 &776245066 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 5745579600081312517, guid: 4d10d5095c0989f40a94979da665b465, type: 3}
+  m_PrefabInstance: {fileID: 776245062}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &995207921
 GameObject:
   m_ObjectHideFlags: 0
@@ -755,8 +815,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 321500845}
         m_TargetAssemblyTypeName: SceneChanger, Assembly-CSharp
-        m_MethodName: LoadScene
-        m_Mode: 5
+        m_MethodName: ConfirmPlayer2
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -887,8 +947,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 321500845}
         m_TargetAssemblyTypeName: SceneChanger, Assembly-CSharp
-        m_MethodName: LoadScene
-        m_Mode: 5
+        m_MethodName: ConfirmPlayer1
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -999,9 +1059,13 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -558093898605547249, guid: 4d10d5095c0989f40a94979da665b465, type: 3}
+      propertyPath: m_Name
+      value: SecurityBoi
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4d10d5095c0989f40a94979da665b465, type: 3}
       propertyPath: m_Name
-      value: SecurityBoi 2
+      value: SecurityBoi
       objectReference: {fileID: 0}
     - target: {fileID: 5745579600081312517, guid: 4d10d5095c0989f40a94979da665b465, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -1042,6 +1106,11 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!137 &1075361590 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 5745579600081312517, guid: 4d10d5095c0989f40a94979da665b465, type: 3}
+  m_PrefabInstance: {fileID: 1075361586}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1091810232
 GameObject:
   m_ObjectHideFlags: 0
@@ -1071,10 +1140,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cce17f342a9a7549b53930c1fb3a194, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterRenderer: {fileID: 0}
+  characterRenderer: {fileID: 1075361590}
   characterMaterials:
   - {fileID: 2100000, guid: 473d8bb7f181e1846a7ee9e073970eca, type: 2}
   - {fileID: 2100000, guid: 8848766434923ad4781c03023fbe28c6, type: 2}
+  - {fileID: 2100000, guid: d4994d56dbc85f7479a657a322f87906, type: 2}
+  - {fileID: 2100000, guid: 9dd373132ba6d0b4589c052be00b846c, type: 2}
   currentMaterialIndex: 0
 --- !u!4 &1091810234
 Transform:
@@ -1437,7 +1508,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1091810233}
+      - m_Target: {fileID: 108381620}
         m_TargetAssemblyTypeName: CharacterSelectionManager, Assembly-CSharp
         m_MethodName: PreviousCharacter
         m_Mode: 1
@@ -1803,7 +1874,8 @@ SceneRoots:
   - {fileID: 2032429610}
   - {fileID: 1955669284}
   - {fileID: 1091810234}
+  - {fileID: 108381621}
   - {fileID: 1887176600}
-  - {fileID: 776245062}
   - {fileID: 1075361586}
+  - {fileID: 776245062}
   - {fileID: 321500846}
