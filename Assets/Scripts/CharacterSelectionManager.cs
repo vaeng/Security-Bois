@@ -3,32 +3,30 @@ using UnityEngine.UI;
 
 public class CharacterSelectionManager : MonoBehaviour
 {
-    public Image characterImage;     
-    public Sprite[] characterSprites;
-    public int currentCharacterIndex = 0;
+    [SerializeField] private Renderer characterRenderer; 
+    public Material[] characterMaterials;
+    public int currentMaterialIndex = 0;
+
+    void Start()
+    {
+        // characterRenderer = GetComponent<Renderer>();
+        UpdateCharacterMaterial();
+    }
 
     public void NextCharacter()
     {
-        currentCharacterIndex++;
-        if (currentCharacterIndex >= characterSprites.Length)
-        {
-            currentCharacterIndex = 0; 
-        }
-        UpdateCharacterImage();
+        currentMaterialIndex = (currentMaterialIndex + 1) % characterMaterials.Length;
+        UpdateCharacterMaterial();
     }
 
     public void PreviousCharacter()
     {
-        currentCharacterIndex--;
-        if (currentCharacterIndex < 0)
-        {
-            currentCharacterIndex = characterSprites.Length - 1; 
-        }
-        UpdateCharacterImage();
+        currentMaterialIndex = (currentMaterialIndex - 1 + characterMaterials.Length) % characterMaterials.Length;
+        UpdateCharacterMaterial();
     }
 
-    private void UpdateCharacterImage()
+    private void UpdateCharacterMaterial()
     {
-        characterImage.sprite = characterSprites[currentCharacterIndex];
+        characterRenderer.material = characterMaterials[currentMaterialIndex];
     }
 }
