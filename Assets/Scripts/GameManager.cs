@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     public GameObject[] players;
 
     public bool gameWon = false;
+    public bool gameLost = false;
     public int totalTimeInSeconds = 60;
     public float secondsLeft;
     int activePlayerIndex = 0;
@@ -23,18 +24,10 @@ void Start()
     {
         players[activePlayerIndex].GetComponent<PlayerController>().enabled = true;
 
-        // Überprüfe, ob player1Character existiert und einen MeshRenderer hat
-        // if (SingleCharacterSelectionData.player1Character.GetComponentInChildren<MeshRenderer>.material != null && 
-            // SingleCharacterSelectionData.player1Character.GetComponent<MeshRenderer>().material != null)
-        // {
-        //     // Material auf den bereits existierenden Spieler setzen
-        //     players[activePlayerIndex].GetComponent<MeshRenderer>().material = 
-        //         SingleCharacterSelectionData.player1Character.GetComponent<MeshRenderer>().material;
-        // }
-        // else
-        // {
-        //     Debug.LogWarning("player1Character oder dessen MeshRenderer ist null.");
-        // }
+        secondsLeft = totalTimeInSeconds;
+
+        // find child object SecurityBoi1 of player1:
+    //    players[0].GetComponentInChildren<SkinnedMeshRenderer>().materials[0] = CharacterSelectionData.player1CharacterMaterial;
     }
     
     secondsLeft = totalTimeInSeconds;
@@ -62,7 +55,13 @@ void Start()
             gameWon = true;
             Debug.Log("Game Won!");
             Debug.Log("Time left: " + secondsLeft);
-            // PauseGame();
+            PauseGame();
+        }
+        if (secondsLeft <= 0)
+        {
+            gameLost = true;
+            Debug.Log("Game Lost!");
+            PauseGame();
         }
 
         // count down the time in seconds:
