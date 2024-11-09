@@ -3454,7 +3454,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreText: {fileID: 1171652063}
   score: 0
-  highScoreText1: {fileID: 0}
+  highScoreText1: {fileID: 272470798}
   highScoreText2: {fileID: 0}
   highScoreText3: {fileID: 0}
   highScoreText4: {fileID: 0}

@@ -23,10 +23,11 @@ public class LeaveArea : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Guest"))
         {
+            Destroy(collision.gameObject);
             scoreManager.AddPoints(10);
             scoreManager.UpdateScoreText();
             scoreManager.UpdateHighScoreText();
-            Destroy(collision.gameObject);
+            
         }
     }
 }

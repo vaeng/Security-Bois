@@ -959,9 +959,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreText: {fileID: 0}
-  highScoreText: {fileID: 0}
   score: 0
-  highScore: 0
+  highScoreText1: {fileID: 0}
+  highScoreText2: {fileID: 0}
+  highScoreText3: {fileID: 0}
+  highScoreText4: {fileID: 0}
+  highScoreText5: {fileID: 0}
+  highScoreLevel1: 0
+  highScoreLevel2: 0
+  highScoreLevel3: 0
+  highScoreLevel4: 0
+  highScoreLevel5: 0
 --- !u!4 &773950266
 Transform:
   m_ObjectHideFlags: 0
@@ -2378,7 +2386,7 @@ GameObject:
   - component: {fileID: 2069964652}
   - component: {fileID: 2069964651}
   m_Layer: 5
-  m_Name: HighScoreLevel1
+  m_Name: highScoreText1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
