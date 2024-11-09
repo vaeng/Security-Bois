@@ -16,13 +16,14 @@ public class SpawnManager : MonoBehaviour
         // instantiate numberOfGuests guests
         for (int i = 0; i < numberOfGuests; i++)
         {
-            // get a random position within the level area
-
-            // TODO: seems wrong, spawns too far inside the level area?
-            float x = Random.Range(levelArea.transform.position.x - levelArea.transform.localScale.x / 2, levelArea.transform.position.x + levelArea.transform.localScale.x / 2);
-            float z = Random.Range(levelArea.transform.position.z - levelArea.transform.localScale.z / 2, levelArea.transform.position.z + levelArea.transform.localScale.z / 2);
-            // instantiate the guest at the random position
-            GameObject birb = Instantiate(guestPrefab, new Vector3(x, 0.5f, z), guestPrefab.transform.rotation);
+            // get a random position within the level area, take limits from bounds of the level area's box collider
+            float x = Random.Range(levelArea.GetComponent<Collider>().bounds.min.x, levelArea.GetComponent<Collider>().bounds.max.x);
+            float z = Random.Range(levelArea.GetComponent<Collider>().bounds.min.z, levelArea.GetComponent<Collider>().bounds.max.z);
+            
+            // instantiate the guest at the random position, realtive to the level area center
+            Vector3 randomSpawnPoint = new Vector3(levelArea.transform.position.x + x, 0.5f, + levelArea.transform.position.z + z);
+            GameObject birb = Instantiate(guestPrefab, randomSpawnPoint, guestPrefab.transform.rotation);
+            
             // set a random skin for the guest
             birb.GetComponentInChildren<SkinnedMeshRenderer>().material = birbSkins[Random.Range(0, birbSkins.Length)];
         }
