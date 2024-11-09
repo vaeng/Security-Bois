@@ -36,6 +36,8 @@ public class GameManager : MonoBehaviour
         {
             gameWon = true;
             Debug.Log("Game Won!");
+            Debug.Log("Time left: " + secondsLeft);
+            PauseGame();
         }
 
         // count down the time in seconds:
