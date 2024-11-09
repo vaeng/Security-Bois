@@ -9,7 +9,6 @@ public class CharacterSelectionManager : MonoBehaviour
 
     void Start()
     {
-        // characterRenderer = GetComponent<Renderer>();
         UpdateCharacterMaterial();
     }
 
