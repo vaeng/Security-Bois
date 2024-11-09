@@ -6,6 +6,8 @@ public class SpawnManager : MonoBehaviour
 
     public GameObject guestPrefab;
     private GameObject levelArea;
+
+    public Material[] birbSkins;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -20,7 +22,9 @@ public class SpawnManager : MonoBehaviour
             float x = Random.Range(levelArea.transform.position.x - levelArea.transform.localScale.x / 2, levelArea.transform.position.x + levelArea.transform.localScale.x / 2);
             float z = Random.Range(levelArea.transform.position.z - levelArea.transform.localScale.z / 2, levelArea.transform.position.z + levelArea.transform.localScale.z / 2);
             // instantiate the guest at the random position
-            Instantiate(guestPrefab, new Vector3(x, 0.5f, z), guestPrefab.transform.rotation);
+            GameObject birb = Instantiate(guestPrefab, new Vector3(x, 0.5f, z), guestPrefab.transform.rotation);
+            // set a random skin for the guest
+            birb.GetComponentInChildren<SkinnedMeshRenderer>().material = birbSkins[Random.Range(0, birbSkins.Length)];
         }
     }
 
