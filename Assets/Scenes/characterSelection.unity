@@ -304,7 +304,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 638328130}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2118421638}
+        m_TargetAssemblyTypeName: CharacterSelectionManager, Assembly-CSharp
+        m_MethodName: PreviousCharacter
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &638328130
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -781,6 +793,11 @@ CanvasRenderer:
 --- !u!1 &1248528934 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -558093898605547249, guid: 4d10d5095c0989f40a94979da665b465, type: 3}
+  m_PrefabInstance: {fileID: 1805162562}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &1248528936 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 5745579600081312517, guid: 4d10d5095c0989f40a94979da665b465, type: 3}
   m_PrefabInstance: {fileID: 1805162562}
   m_PrefabAsset: {fileID: 0}
 --- !u!95 &1248528937
@@ -1640,7 +1657,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1930258475}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2118421638}
+        m_TargetAssemblyTypeName: CharacterSelectionManager, Assembly-CSharp
+        m_MethodName: NextCharacter
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1930258475
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1829,7 +1858,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cce17f342a9a7549b53930c1fb3a194, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterRenderer: {fileID: 0}
+  characterRenderer: {fileID: 1248528936}
   characterMaterials:
   - {fileID: 2100000, guid: 473d8bb7f181e1846a7ee9e073970eca, type: 2}
   - {fileID: 2100000, guid: 8848766434923ad4781c03023fbe28c6, type: 2}
