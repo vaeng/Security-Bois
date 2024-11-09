@@ -31,13 +31,13 @@ public class ScoreManager : MonoBehaviour
     public void AddPoints(int points)
     {
         score += points;
-        UpdateScoreText();         // Punktestand aktualisieren
+        UpdateScoreText();
     }
 
     // Den aktuellen Punktestand anzeigen
     public void UpdateScoreText()
     {
-        // scoreText.text = "Score: " + score.ToString();
+        scoreText.text = "Your Score: " + score.ToString();
     }
 
     // Alle Highscore-Textfelder aktualisieren

@@ -9,13 +9,17 @@ public class LeaveArea : MonoBehaviour
     public GameObject[] pathPoints;
     public float exitSpeed = 1.0f;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+void Start()
+{
+    if (scoreManager == null)
     {
+        scoreManager = Object.FindFirstObjectByType<ScoreManager>();
         if (scoreManager == null)
         {
-            scoreManager = Object.FindFirstObjectByType<ScoreManager>();
+            Debug.LogError("ScoreManager not found in the scene.");
         }
     }
+}
 
     // Update is called once per frame
     void Update()
@@ -41,10 +45,10 @@ public class LeaveArea : MonoBehaviour
             // decrease the number of guests in the level at the guestsInTheArea counter of the GameManager
             Object.FindFirstObjectByType<GameManager>().guestsInTheArea--;
 
-            scoreManager.AddPoints(10);
-            scoreManager.UpdateScoreText();
-            // scoreManager.UpdateHighScoreText();
-            Debug.Log("Guest exited, +10 points");
+            // scoreManager.AddPoints(10);
+            // scoreManager.UpdateScoreText();
+            // // scoreManager.UpdateHighScoreText();
+            // Debug.Log("Guest exited, +10 points");
 
         }
     }
@@ -52,6 +56,11 @@ public class LeaveArea : MonoBehaviour
     // Coroutine to move the guest along a path and destroy it when it reaches the end
     IEnumerator MoveGuest(GameObject guest)
     {
+        scoreManager.AddPoints(10);
+        scoreManager.UpdateScoreText();
+        // scoreManager.UpdateHighScoreText();
+        Debug.Log("Guest exited, +10 points");    
+
         // radius that the guest can be from the path point, to be considered on point to proceed to the next
         float deltaDistance = 0.5f;
 
@@ -63,6 +72,7 @@ public class LeaveArea : MonoBehaviour
                 yield return null;
             }
         }
+        
         // check if they are at the last path point, if so, destroy the guest
         Destroy(guest);
     }

@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/mainMenu.unity
     guid: fa5f14eb4d7fb2f4f96d8ff3a7383e04
   - enabled: 1
+    path: Assets/Scenes/UIScene.unity
+    guid: 2131a0998df1fa649b1c01c6e11965f3
+  - enabled: 1
     path: Assets/Scenes/credits.unity
     guid: 1f334d95cb074e044bd95d3173ccc4f4
   - enabled: 1
@@ -20,6 +23,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/levelSelection.unity
     guid: 08004c2006e07fe4e8c3aa185e72e649
+  - enabled: 1
+    path: Assets/Scenes/pauseScene.unity
+    guid: 7d9649cd55ff28d41a73ef7971ce3501
+  - enabled: 1
+    path: Assets/Scenes/winningScene.unity
+    guid: 7fd3fe1a028f5c34eba1f1e473f508b1
+  - enabled: 1
+    path: Assets/Scenes/winningHighscoreScene.unity
+    guid: a1b4a87ef2ee6d245adfb47a93d7471c
+  - enabled: 1
+    path: Assets/Scenes/loosingScene.unity
+    guid: 0d6e4778c777d024fbc8d7ceba373d00
   - enabled: 1
     path: Assets/Scenes/level/level1.unity
     guid: 99c9720ab356a0642a771bea13969a05
