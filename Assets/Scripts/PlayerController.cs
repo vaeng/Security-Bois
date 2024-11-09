@@ -5,10 +5,12 @@ public class PlayerController : MonoBehaviour
     public float speed = 10.0f;
     public float pushForce = 3000.0f;
     public float shoutRadius = 5.0f;
+    private Animator animator;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        // find animator in child components
+        animator = GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
@@ -17,12 +19,20 @@ public class PlayerController : MonoBehaviour
         // Move the player left and right
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
-        transform.Translate(Vector3.right * horizontalInput * Time.deltaTime * speed, Space.World);
-        transform.Translate(Vector3.forward * verticalInput * Time.deltaTime * speed, Space.World);
+        // only move and animate, if there is any input
+        if (horizontalInput != 0 || verticalInput != 0)
+        {
+            transform.Translate(Vector3.right * horizontalInput * Time.deltaTime * speed, Space.World);
+            transform.Translate(Vector3.forward * verticalInput * Time.deltaTime * speed, Space.World);
 
-        // turn the player to the direction of movement, calculate the angle of the movement from horizontal and vertical input
-        float angle = Mathf.Atan2(horizontalInput, verticalInput) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(0, angle, 0);
+            // turn the player to the direction of movement, calculate the angle of the movement from horizontal and vertical input
+            float angle = Mathf.Atan2(horizontalInput, verticalInput) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(0, angle, 0);
+            animator.SetBool("walk_b", true);
+        } else
+        {
+            animator.SetBool("walk_b", false);
+        }
 
 
         // if the player presses the space key or the joystick button 1 or the control key on the keyboard,
@@ -42,6 +52,8 @@ public class PlayerController : MonoBehaviour
                 }
                 
             }
+            // set shout_t trigger in animator
+            animator.SetTrigger("shout_t");
         }
     }
 
