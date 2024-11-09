@@ -173,7 +173,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bffb401e95edf0b4da2bb5394916583b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  speed: 1
 --- !u!114 &4726812607426121868
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -200,4 +200,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelArea: {fileID: 0}
-  distanceFromEdge: 0.5
