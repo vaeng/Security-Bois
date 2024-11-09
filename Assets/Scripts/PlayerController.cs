@@ -3,7 +3,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float speed = 10.0f;
-    public float pushForce = 3000.0f;
+    public float pushForce = 4000.0f;
     public float shoutRadius = 5.0f;
     private Animator animator;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
