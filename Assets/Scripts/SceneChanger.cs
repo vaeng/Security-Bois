@@ -11,11 +11,12 @@ public class SceneChanger : MonoBehaviour
     private bool player1Confirmed = false;
     private bool player2Confirmed = false;
 
-    public void ConfirmPlayer1(GameObject selectedCharacter)
+    public void ConfirmPlayer1(GameObject selectedCharacter.material)
     {
-        CharacterSelectionData.player1Character = selectedCharacter;
+        SingleCharacterSelectionData.player1Character = selectedCharacter;
         player1Confirmed = true;
-        CheckBothPlayersConfirmed();
+        // CheckBothPlayersConfirmed();
+        LoadScene("levelSelection");
     }
         public void ConfirmPlayer2(GameObject selectedCharacter)
     {

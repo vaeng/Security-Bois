@@ -43,7 +43,7 @@ public class LeaveArea : MonoBehaviour
 
             scoreManager.AddPoints(10);
             scoreManager.UpdateScoreText();
-            scoreManager.UpdateHighScoreText();
+            // scoreManager.UpdateHighScoreText();
             Debug.Log("Guest exited, +10 points");
 
         }

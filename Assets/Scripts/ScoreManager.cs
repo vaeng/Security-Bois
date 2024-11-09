@@ -24,7 +24,7 @@ public class ScoreManager : MonoBehaviour
     {
         LoadScore();               // Highscores laden
         UpdateScoreText();          // Aktuellen Punktestand anzeigen
-        UpdateHighScoreText();      // Alle Highscores anzeigen
+        // UpdateHighScoreText();      // Alle Highscores anzeigen
     }
 
     // Punkte zum aktuellen Score hinzufügen
@@ -41,14 +41,14 @@ public class ScoreManager : MonoBehaviour
     }
 
     // Alle Highscore-Textfelder aktualisieren
-    public void UpdateHighScoreText()
-    {
-        highScoreText1.text = "Highscore Level 1: " + highScoreLevel1.ToString();
-        highScoreText2.text = "Highscore Level 2: " + highScoreLevel2.ToString();
-        highScoreText3.text = "Highscore Level 3: " + highScoreLevel3.ToString();
-        highScoreText4.text = "Highscore Level 4: " + highScoreLevel4.ToString();
-        highScoreText5.text = "Highscore Level 5: " + highScoreLevel5.ToString();
-    }
+    // public void UpdateHighScoreText()
+    // {
+    //     highScoreText1.text = "Highscore Level 1: " + highScoreLevel1.ToString();
+    //     highScoreText2.text = "Highscore Level 2: " + highScoreLevel2.ToString();
+    //     highScoreText3.text = "Highscore Level 3: " + highScoreLevel3.ToString();
+    //     highScoreText4.text = "Highscore Level 4: " + highScoreLevel4.ToString();
+    //     highScoreText5.text = "Highscore Level 5: " + highScoreLevel5.ToString();
+    // }
 
     // Highscore speichern, wenn der aktuelle Punktestand höher ist
     public void SaveScore(int level)
@@ -111,7 +111,7 @@ public class ScoreManager : MonoBehaviour
         highScoreLevel3 = PlayerPrefs.GetInt("HighScoreLevel3", 0);
         highScoreLevel4 = PlayerPrefs.GetInt("HighScoreLevel4", 0);
         highScoreLevel5 = PlayerPrefs.GetInt("HighScoreLevel5", 0);
-        UpdateHighScoreText(); // Highscore-Textfelder aktualisieren
+        // UpdateHighScoreText(); // Highscore-Textfelder aktualisieren
     }
 
     // Beispielweise beim Beenden des Spiels oder einer Szene aufrufen
