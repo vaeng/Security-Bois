@@ -9,6 +9,9 @@ public class GameManager : MonoBehaviour
     public float secondsLeft;
     int activePlayerIndex = 0;
 
+    // needs to be initialized or the game will be won immediately
+    public int guestsInTheArea = 23;
+
     public bool isPaused = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -35,7 +38,7 @@ public class GameManager : MonoBehaviour
             players[activePlayerIndex].GetComponent<PlayerController>().enabled = true;
         }
         // count guests in the scene, if zero, game is won
-        if (GameObject.FindGameObjectsWithTag("Guest").Length == 0)
+        if (guestsInTheArea <= 0)
         {
             gameWon = true;
             Debug.Log("Game Won!");
