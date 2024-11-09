@@ -11,7 +11,7 @@ public class SceneChanger : MonoBehaviour
     private bool player1Confirmed = false;
     private bool player2Confirmed = false;
 
-    public void ConfirmPlayer1(GameObject selectedCharacter.material)
+    public void ConfirmPlayer1(GameObject selectedCharacter)
     {
         SingleCharacterSelectionData.player1Character = selectedCharacter;
         player1Confirmed = true;

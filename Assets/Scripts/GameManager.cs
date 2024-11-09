@@ -24,17 +24,17 @@ void Start()
         players[activePlayerIndex].GetComponent<PlayerController>().enabled = true;
 
         // Überprüfe, ob player1Character existiert und einen MeshRenderer hat
-        if (SingleCharacterSelectionData.player1Character.GetComponentInChildren<MeshRenderer>.material != null && 
-            SingleCharacterSelectionData.player1Character.GetComponent<MeshRenderer>().material != null)
-        {
-            // Material auf den bereits existierenden Spieler setzen
-            players[activePlayerIndex].GetComponent<MeshRenderer>().material = 
-                SingleCharacterSelectionData.player1Character.GetComponent<MeshRenderer>().material;
-        }
-        else
-        {
-            Debug.LogWarning("player1Character oder dessen MeshRenderer ist null.");
-        }
+        // if (SingleCharacterSelectionData.player1Character.GetComponentInChildren<MeshRenderer>.material != null && 
+            // SingleCharacterSelectionData.player1Character.GetComponent<MeshRenderer>().material != null)
+        // {
+        //     // Material auf den bereits existierenden Spieler setzen
+        //     players[activePlayerIndex].GetComponent<MeshRenderer>().material = 
+        //         SingleCharacterSelectionData.player1Character.GetComponent<MeshRenderer>().material;
+        // }
+        // else
+        // {
+        //     Debug.LogWarning("player1Character oder dessen MeshRenderer ist null.");
+        // }
     }
     
     secondsLeft = totalTimeInSeconds;

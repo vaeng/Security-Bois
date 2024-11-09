@@ -37,7 +37,7 @@ public class ScoreManager : MonoBehaviour
     // Den aktuellen Punktestand anzeigen
     public void UpdateScoreText()
     {
-        scoreText.text = "Score: " + score.ToString();
+        // scoreText.text = "Score: " + score.ToString();
     }
 
     // Alle Highscore-Textfelder aktualisieren
