@@ -52,6 +52,8 @@ public class PlayerController : MonoBehaviour
                 }
                 
             }
+            // set shout_t trigger in animator
+            animator.SetTrigger("shout_t");
         }
     }
 
