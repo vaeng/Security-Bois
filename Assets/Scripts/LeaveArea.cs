@@ -7,19 +7,22 @@ public class LeaveArea : MonoBehaviour
     public ScoreManager scoreManager;
 
     public GameObject[] pathPoints;
-    public float exitSpeed = 1.0f;
+    public float exitSpeed = 2.0f;
+
+    // radius that the guest can be from the path point, to be considered on point to proceed to the next
+    public float deltaDistance = 1.0f;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-void Start()
-{
-    if (scoreManager == null)
+    void Start()
     {
-        scoreManager = Object.FindFirstObjectByType<ScoreManager>();
         if (scoreManager == null)
         {
-            Debug.LogError("ScoreManager not found in the scene.");
+            scoreManager = Object.FindFirstObjectByType<ScoreManager>();
+            if (scoreManager == null)
+            {
+                Debug.LogError("ScoreManager not found in the scene.");
+            }
         }
     }
-}
 
     // Update is called once per frame
     void Update()
@@ -59,10 +62,7 @@ void Start()
         scoreManager.AddPoints(10);
         scoreManager.UpdateScoreText();
         // scoreManager.UpdateHighScoreText();
-        Debug.Log("Guest exited, +10 points");    
-
-        // radius that the guest can be from the path point, to be considered on point to proceed to the next
-        float deltaDistance = 0.5f;
+        Debug.Log("Guest exited, +10 points");
 
         for (int i = 0; i < pathPoints.Length; i++)
         {
@@ -72,7 +72,7 @@ void Start()
                 yield return null;
             }
         }
-        
+
         // check if they are at the last path point, if so, destroy the guest
         Destroy(guest);
     }

@@ -3838,7 +3838,7 @@ MonoBehaviour:
   - {fileID: 954746369}
   - {fileID: 1935079671}
   - {fileID: 1565814053}
-  exitSpeed: 1
+  exitSpeed: 2
 --- !u!1001 &1893697606
 PrefabInstance:
   m_ObjectHideFlags: 0
