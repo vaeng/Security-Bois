@@ -1,3 +1,4 @@
+using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
@@ -17,8 +18,8 @@ public class ScoreManager : MonoBehaviour
     public static int currentScore = 0;
     public static int currentLevel = 0;
 
-    public int defaultPoints = 10;  // Standardpunkte für das Verlassen des Levels
-    public double pointsPerSecond = 100; // Punkte pro Sekunde
+    public static int defaultPoints = 10;  // Standardpunkte für das Verlassen des Levels
+    public static double pointsPerSecond = 100; // Punkte pro Sekunde
 
     // Get highscores from PlayerPrefs, as an array of 5 integers, with default values of 0, if no highscore is saved
     // load each HighScore from PlayerPrefs to construct array, like "HighScore1" is the key for the first highscore, that corrsponds to the first element of the array
@@ -75,17 +76,26 @@ public class ScoreManager : MonoBehaviour
         Debug.Log("Score has been reset, because the level has changed. Please don't call this method in the middle of a level.");
     }
 
-
+    public static void SetScoreTextLabel(Text scoreTextLabel)
+    {
+        scoreText = scoreTextLabel;
+    }
 
     void Start()
     {
         // LoadScore();               // Highscores laden
-        UpdateScoreText();          // Aktuellen Punktestand anzeigen
+        UpdateScoreText();          // Aktuellen Punktestand anzeigenx
         // UpdateHighScoreText();      // Alle Highscores anzeigen
+        scoreText = GameObject.Find("Score").GetComponent<Text>();
+        if (scoreText == null)
+        {
+            Debug.LogError("Score Text not found in the scene.");
+        }
+
     }
 
     // Punkte zum aktuellen Score hinzufügen
-    public void AddPoints(int points = 0)
+    public static void AddPoints(int points = 0)
     {
         currentScore += points == 0 ? defaultPoints : points;
         UpdateScoreText();
@@ -115,7 +125,7 @@ public class ScoreManager : MonoBehaviour
     // }
 
     // Highscore speichern, wenn der aktuelle Punktestand höher ist
-    public void SaveScore()
+    public static void SaveScore()
     {
         // Vergleiche und speichere den Highscore für das spezifische Level
         if (currentScore > highScores[currentLevel - 1])
