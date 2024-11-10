@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviour
         {
             // add seconds left to score
             gameWon = true;
-            ScoreManager.AddPointsPerSecond(secondsLeft):
+            ScoreManager.AddPointsPerSecond(secondsLeft);
             Debug.Log("Game Won!");
             Debug.Log("Time left: " + secondsLeft);
             if(ScoreManager.isHighScore())
