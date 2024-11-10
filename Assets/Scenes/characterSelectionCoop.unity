@@ -684,10 +684,10 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 2000
+  far clip plane: 3000
   field of view: 60
   orthographic: 1
-  orthographic size: 300
+  orthographic size: 1000
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -712,7 +712,7 @@ Transform:
   m_GameObject: {fileID: 397595352}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 436, y: 245, z: -988}
+  m_LocalPosition: {x: 1027, y: 245, z: -1398}
   m_LocalScale: {x: 3.37, y: -0.3033939, z: 3.35}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -925,23 +925,23 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 4d10d5095c0989f40a94979da665b465, type: 3}
       propertyPath: m_LocalScale.x
-      value: 298.74045
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4d10d5095c0989f40a94979da665b465, type: 3}
       propertyPath: m_LocalScale.y
-      value: 298.74045
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4d10d5095c0989f40a94979da665b465, type: 3}
       propertyPath: m_LocalScale.z
-      value: 298.74045
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4d10d5095c0989f40a94979da665b465, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 512.12646
+      value: 944
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4d10d5095c0989f40a94979da665b465, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -219.78761
+      value: -479
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4d10d5095c0989f40a94979da665b465, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1430,23 +1430,23 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 4d10d5095c0989f40a94979da665b465, type: 3}
       propertyPath: m_LocalScale.x
-      value: 298.74045
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4d10d5095c0989f40a94979da665b465, type: 3}
       propertyPath: m_LocalScale.y
-      value: 298.74045
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4d10d5095c0989f40a94979da665b465, type: 3}
       propertyPath: m_LocalScale.z
-      value: 298.74045
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4d10d5095c0989f40a94979da665b465, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -618.8195
+      value: -810
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4d10d5095c0989f40a94979da665b465, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -219.78761
+      value: -476
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4d10d5095c0989f40a94979da665b465, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2582,15 +2582,15 @@ RectTransform:
   m_GameObject: {fileID: 2123174618}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 437}
-  m_LocalScale: {x: 162.5126, y: 200.00551, z: 200.00551}
+  m_LocalScale: {x: 254.90796, y: 200.00551, z: 200.00551}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1887176600}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 189, y: -424.638}
-  m_SizeDelta: {x: 248.4, y: 150.724}
+  m_AnchoredPosition: {x: -315.16406, y: -376.2793}
+  m_SizeDelta: {x: 244.9217, y: 150.6109}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!212 &2123174620
 SpriteRenderer:
