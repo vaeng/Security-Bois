@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: e44ab1247444d33469acde624b523995, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 784110c2efcbc4b4a8037fe629632060, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -3407,18 +3407,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 049cea72c0aead544a7d1f41b8b8831a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreText: {fileID: 1171652063}
-  score: 0
   highScoreText1: {fileID: 272470798}
   highScoreText2: {fileID: 0}
   highScoreText3: {fileID: 0}
   highScoreText4: {fileID: 0}
   highScoreText5: {fileID: 0}
-  highScoreLevel1: 0
-  highScoreLevel2: 0
-  highScoreLevel3: 0
-  highScoreLevel4: 0
-  highScoreLevel5: 0
 --- !u!4 &938721860
 Transform:
   m_ObjectHideFlags: 0
