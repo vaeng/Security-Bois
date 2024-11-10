@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class ScoreManager : MonoBehaviour
 {
     public static Text scoreText;          // Text für den aktuellen Score
+    public static Text timeText;           // Text für die verstrichene Zeit
+    public static string timeLeftText = "";     // Text für die verbleibende Zeit
 
     // Texts für die Highscore-Anzeige (5 Levels)
     public Text highScoreText1;
@@ -86,12 +88,6 @@ public class ScoreManager : MonoBehaviour
         // LoadScore();               // Highscores laden
         UpdateScoreText();          // Aktuellen Punktestand anzeigenx
         // UpdateHighScoreText();      // Alle Highscores anzeigen
-        scoreText = GameObject.Find("Score").GetComponent<Text>();
-        if (scoreText == null)
-        {
-            Debug.LogError("Score Text not found in the scene.");
-        }
-
     }
 
     // Punkte zum aktuellen Score hinzufügen
@@ -111,7 +107,9 @@ public class ScoreManager : MonoBehaviour
     // Den aktuellen Punktestand anzeigen
     public static void UpdateScoreText()
     {
-        scoreText.text = "Your Score: " + currentScore.ToString();
+        scoreText.text = currentScore.ToString();
+        timeText.text = timeLeftText;
+        
     }
 
     // Alle Highscore-Textfelder aktualisieren

@@ -55,7 +55,6 @@ public class PlayerController : MonoBehaviour
                     Vector3 directionToExit = exit.transform.position - guest.transform.position;
                     guest.GetComponent<Rigidbody>().AddForce(directionToExit.normalized * pushForce);
                     guest.GetComponent<Animator>().SetTrigger("push_t");
-                    gameObject.GetComponentInChildren<Animator>().SetTrigger("push_t");
                 }
                 
             }
@@ -74,6 +73,16 @@ public class PlayerController : MonoBehaviour
             // apply force to the guest and push it to the exit
             Vector3 directionToExit = exit.transform.position - collision.gameObject.transform.position;
             collision.gameObject.GetComponent<Rigidbody>().AddForce(directionToExit.normalized * pushForce);
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        // if the player collides with the gameobject with the tag "Guest",
+        // the player animates the push animation, by setting the push_t trigger
+        if (other.gameObject.CompareTag("Guest"))
+        {
+            animator.SetTrigger("push_t");
         }
     }
 }
