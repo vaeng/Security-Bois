@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class ScoreManager : MonoBehaviour
 {
     public static Text scoreText;          // Text für den aktuellen Score
+    public static Text timeText;           // Text für die verstrichene Zeit
+    public static string timeLeftText = "";     // Text für die verbleibende Zeit
 
     // Texts für die Highscore-Anzeige (5 Levels)
     public Text highScoreText1;
@@ -106,6 +108,8 @@ public class ScoreManager : MonoBehaviour
     public static void UpdateScoreText()
     {
         scoreText.text = currentScore.ToString();
+        timeText.text = timeLeftText;
+        
     }
 
     // Alle Highscore-Textfelder aktualisieren
