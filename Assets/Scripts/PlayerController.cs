@@ -42,6 +42,11 @@ public class PlayerController : MonoBehaviour
             GameObject[] guests = GameObject.FindGameObjectsWithTag("Guest");
             foreach (GameObject guest in guests)
             {
+                // skip guests if their MoveToPOI script is disabled
+                if (!guest.GetComponent<MoveToPOI>().enabled)
+                {
+                    continue;
+                }
                 // if the guest is within the shout radius, push the guest away,
                 // towards the gameobject with the tag exit
                 if (Vector3.Distance(transform.position, guest.transform.position) < shoutRadius)
