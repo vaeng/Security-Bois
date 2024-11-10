@@ -55,6 +55,7 @@ public class PlayerController : MonoBehaviour
                     Vector3 directionToExit = exit.transform.position - guest.transform.position;
                     guest.GetComponent<Rigidbody>().AddForce(directionToExit.normalized * pushForce);
                     guest.GetComponent<Animator>().SetTrigger("push_t");
+                    gameObject.GetComponentInChildren<Animator>().SetTrigger("push_t");
                 }
                 
             }
