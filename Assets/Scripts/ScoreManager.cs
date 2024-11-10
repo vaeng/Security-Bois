@@ -1,9 +1,10 @@
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour
 {
-    public Text scoreText;          // Text für den aktuellen Score
+    public static Text scoreText;          // Text für den aktuellen Score
 
     // Texts für die Highscore-Anzeige (5 Levels)
     public Text highScoreText1;
@@ -70,6 +71,8 @@ public class ScoreManager : MonoBehaviour
         }
         Debug.Log("Current scene name is: " + UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
         Debug.Log("Current Level set to: " + currentLevel);
+        currentScore = 0;
+        Debug.Log("Score has been reset, because the level has changed. Please don't call this method in the middle of a level.");
     }
 
 
@@ -89,14 +92,14 @@ public class ScoreManager : MonoBehaviour
     }
 
     // Punkte pro übrig gebliebener Sekunde hinzufügen
-    public void AddPointsPerSecond(double leftOverSeconds)
+    public static void AddPointsPerSecond(double leftOverSeconds)
     {
         currentScore += (int)(leftOverSeconds * pointsPerSecond);
         UpdateScoreText();
     }
 
     // Den aktuellen Punktestand anzeigen
-    public void UpdateScoreText()
+    public static void UpdateScoreText()
     {
         scoreText.text = "Your Score: " + currentScore.ToString();
     }
