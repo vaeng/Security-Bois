@@ -31,9 +31,14 @@ public class GameManager : MonoBehaviour
         ScoreManager.SetLevel();
         // find the object of name "Score" in the scene and assign it's Text component to the scoreText variable in ScoreManager
         ScoreManager.scoreText  = GameObject.Find("Score").GetComponent<Text>();
+        ScoreManager.timeText  = GameObject.Find("Time").GetComponent<Text>();
         if (ScoreManager.scoreText == null)
         {
             Debug.LogError("Score Text not found in the scene.");
+        }
+                if (ScoreManager.timeText == null)
+        {
+            Debug.LogError("Time Text not found in the scene.");
         }
     }
 
@@ -78,6 +83,8 @@ public class GameManager : MonoBehaviour
 
         // Zeit herunterzählen
         secondsLeft -= Time.deltaTime;
+        // Zeit speichern in ScoreManager als "00:00" mit Minuten und Sekunden, je zwei Stellen
+        ScoreManager.timeLeftText = $"{(int)secondsLeft / 60:00}:{(int)secondsLeft % 60:00}";
 
         // Pause-Toggle
         if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Joystick1Button7))
