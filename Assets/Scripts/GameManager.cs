@@ -25,12 +25,14 @@ public class GameManager : MonoBehaviour
         }
 
         secondsLeft = totalTimeInSeconds;
+        // Set the current level in ScoreManager
+        ScoreManager.SetLevel();
     }
 
     void Update()
     {
         // Umschaltung des aktiven Spielers
-        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Joystick1Button1))
+        if (Input.GetKeyDown(KeyCode.Tab) || Input.GetKeyDown(KeyCode.Joystick1Button1))
         {
             players[activePlayerIndex].GetComponent<PlayerController>().enabled = false;
             players[activePlayerIndex].GetComponent<Animator>().SetBool("walk_b", false);
@@ -45,10 +47,17 @@ public class GameManager : MonoBehaviour
         // Gewonnenes Spiel
         if (guestsInTheArea <= 0)
         {
+            // add seconds left to score
             gameWon = true;
+            ScoreManager.AddPointsPerSecond(secondsLeft):
             Debug.Log("Game Won!");
             Debug.Log("Time left: " + secondsLeft);
-            SceneManager.LoadScene("winningScene");
+            if(ScoreManager.isHighScore())
+            {
+                SceneManager.LoadScene("winningHighscoreScene");
+            } else {
+                SceneManager.LoadScene("winningScene");
+            }
         }
 
         // Verlorenes Spiel
@@ -63,7 +72,7 @@ public class GameManager : MonoBehaviour
         secondsLeft -= Time.deltaTime;
 
         // Pause-Toggle
-        if (Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Joystick1Button7))
+        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Joystick1Button7))
         {
             if (isPaused)
             {

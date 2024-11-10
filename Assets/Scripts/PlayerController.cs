@@ -37,11 +37,16 @@ public class PlayerController : MonoBehaviour
 
         // if the player presses the space key or the joystick button 1 or the control key on the keyboard,
         // the player will shout and push the guests away
-        if (Input.GetKeyDown(KeyCode.Joystick1Button0) || Input.GetKeyDown(KeyCode.LeftControl))
+        if (Input.GetKeyDown(KeyCode.Joystick1Button0) || Input.GetKeyDown(KeyCode.Space))
         {
             GameObject[] guests = GameObject.FindGameObjectsWithTag("Guest");
             foreach (GameObject guest in guests)
             {
+                // skip guests if their MoveToPOI script is disabled
+                if (!guest.GetComponent<MoveToPOI>().enabled)
+                {
+                    continue;
+                }
                 // if the guest is within the shout radius, push the guest away,
                 // towards the gameobject with the tag exit
                 if (Vector3.Distance(transform.position, guest.transform.position) < shoutRadius)

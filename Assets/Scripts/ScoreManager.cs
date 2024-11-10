@@ -1,10 +1,10 @@
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour
 {
-    public Text scoreText;          // Text für den aktuellen Score
-    public int score;               // Aktueller Punktestand
+    public static Text scoreText;          // Text für den aktuellen Score
 
     // Texts für die Highscore-Anzeige (5 Levels)
     public Text highScoreText1;
@@ -13,31 +13,95 @@ public class ScoreManager : MonoBehaviour
     public Text highScoreText4;
     public Text highScoreText5;
 
-    // Highscores für verschiedene Levels
-    public int highScoreLevel1;
-    public int highScoreLevel2;
-    public int highScoreLevel3;
-    public int highScoreLevel4;
-    public int highScoreLevel5;
+        
+    public static int currentScore = 0;
+    public static int currentLevel = 0;
+
+    public int defaultPoints = 10;  // Standardpunkte für das Verlassen des Levels
+    public double pointsPerSecond = 100; // Punkte pro Sekunde
+
+    // Get highscores from PlayerPrefs, as an array of 5 integers, with default values of 0, if no highscore is saved
+    // load each HighScore from PlayerPrefs to construct array, like "HighScore1" is the key for the first highscore, that corrsponds to the first element of the array
+    public static int[] highScores =  new int[5];
+
+    public static bool isHighScore()
+    {
+        return currentScore > highScores[currentLevel - 1];
+    }
+
+    // Make important class variables accessible from other classes and static
+    public static ScoreManager Instance;
+
+    private void Awake()
+    {
+        Instance = this;
+        highScores = new int[]{
+            PlayerPrefs.GetInt("HighScoreLevel1", 0),
+            PlayerPrefs.GetInt("HighScoreLevel2", 0),
+            PlayerPrefs.GetInt("HighScoreLevel3", 0),
+            PlayerPrefs.GetInt("HighScoreLevel4", 0),
+            PlayerPrefs.GetInt("HighScoreLevel5", 0)
+        };
+        DontDestroyOnLoad(gameObject);
+    }
+
+    // Set the current score by the name of the Scene where this function is called
+    public static void SetLevel()
+    {
+        switch (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name)
+        {
+            case "level1":
+                currentLevel = 1;
+                break;
+            case "level2":
+                currentLevel = 2;
+                break;
+            case "level3":
+                currentLevel = 3;
+                break;
+            case "level4":
+                currentLevel = 4;
+                break;
+            case "level5":
+                currentLevel = 5;
+                break;
+            default:
+                Debug.LogError("Scene name not found");
+                break;
+        }
+        Debug.Log("Current scene name is: " + UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+        Debug.Log("Current Level set to: " + currentLevel);
+        currentScore = 0;
+        Debug.Log("Score has been reset, because the level has changed. Please don't call this method in the middle of a level.");
+    }
+
+
 
     void Start()
     {
-        LoadScore();               // Highscores laden
+        // LoadScore();               // Highscores laden
         UpdateScoreText();          // Aktuellen Punktestand anzeigen
         // UpdateHighScoreText();      // Alle Highscores anzeigen
     }
 
     // Punkte zum aktuellen Score hinzufügen
-    public void AddPoints(int points)
+    public void AddPoints(int points = 0)
     {
-        score += points;
+        currentScore += points == 0 ? defaultPoints : points;
+        UpdateScoreText();
+    }
+
+    // Punkte pro übrig gebliebener Sekunde hinzufügen
+    public static void AddPointsPerSecond(double leftOverSeconds)
+    {
+        currentScore += (int)(leftOverSeconds * pointsPerSecond);
         UpdateScoreText();
     }
 
     // Den aktuellen Punktestand anzeigen
-    public void UpdateScoreText()
+    public static void UpdateScoreText()
     {
-        scoreText.text = "Your Score: " + score.ToString();
+        scoreText.text = "Your Score: " + currentScore.ToString();
     }
 
     // Alle Highscore-Textfelder aktualisieren
@@ -51,72 +115,22 @@ public class ScoreManager : MonoBehaviour
     // }
 
     // Highscore speichern, wenn der aktuelle Punktestand höher ist
-    public void SaveScore(int level)
+    public void SaveScore()
     {
         // Vergleiche und speichere den Highscore für das spezifische Level
-        switch (level)
+        if (currentScore > highScores[currentLevel - 1])
         {
-            case 1:
-                if (score > highScoreLevel1)
-                {
-                    highScoreLevel1 = score;
-                    PlayerPrefs.SetInt("HighScoreLevel1", highScoreLevel1);
-                }
-                break;
-
-            case 2:
-                if (score > highScoreLevel2)
-                {
-                    highScoreLevel2 = score;
-                    PlayerPrefs.SetInt("HighScoreLevel2", highScoreLevel2);
-                }
-                break;
-
-            case 3:
-                if (score > highScoreLevel3)
-                {
-                    highScoreLevel3 = score;
-                    PlayerPrefs.SetInt("HighScoreLevel3", highScoreLevel3);
-                }
-                break;
-
-            case 4:
-                if (score > highScoreLevel4)
-                {
-                    highScoreLevel4 = score;
-                    PlayerPrefs.SetInt("HighScoreLevel4", highScoreLevel4);
-                }
-                break;
-
-            case 5:
-                if (score > highScoreLevel5)
-                {
-                    highScoreLevel5 = score;
-                    PlayerPrefs.SetInt("HighScoreLevel5", highScoreLevel5);
-                }
-                break;
-
-            default:
-                Debug.LogError("Invalid level!");
-                break;
+            highScores[currentLevel - 1] = currentScore;
+            PlayerPrefs.SetInt("HighScoreLevel" + currentLevel, currentScore);
+            PlayerPrefs.Save(); // Änderungen speichern
         }
         PlayerPrefs.Save(); // Änderungen speichern
     }
 
-    // Highscores für alle Level laden
-    public void LoadScore()
-    {
-        highScoreLevel1 = PlayerPrefs.GetInt("HighScoreLevel1", 0);  // Standardwert: 0
-        highScoreLevel2 = PlayerPrefs.GetInt("HighScoreLevel2", 0);
-        highScoreLevel3 = PlayerPrefs.GetInt("HighScoreLevel3", 0);
-        highScoreLevel4 = PlayerPrefs.GetInt("HighScoreLevel4", 0);
-        highScoreLevel5 = PlayerPrefs.GetInt("HighScoreLevel5", 0);
-        // UpdateHighScoreText(); // Highscore-Textfelder aktualisieren
-    }
 
     // Beispielweise beim Beenden des Spiels oder einer Szene aufrufen
     void OnApplicationQuit()
     {
-        SaveScore(1);  // Zum Beispiel den Highscore für Level 1 speichern
+        SaveScore();  // Zum Beispiel den Highscore für Level 1 speichern
     }
 }
