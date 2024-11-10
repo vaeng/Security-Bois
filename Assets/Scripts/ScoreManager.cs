@@ -1,6 +1,4 @@
-using UnityEditor.SearchService;
 using UnityEngine;
-using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour
@@ -78,11 +76,6 @@ public class ScoreManager : MonoBehaviour
         Debug.Log("Score has been reset, because the level has changed. Please don't call this method in the middle of a level.");
     }
 
-    public static void SetScoreTextLabel(Text scoreTextLabel)
-    {
-        scoreText = scoreTextLabel;
-    }
-
     void Start()
     {
         // LoadScore();               // Highscores laden
@@ -111,16 +104,6 @@ public class ScoreManager : MonoBehaviour
         timeText.text = timeLeftText;
         
     }
-
-    // Alle Highscore-Textfelder aktualisieren
-    // public void UpdateHighScoreText()
-    // {
-    //     highScoreText1.text = "Highscore Level 1: " + highScoreLevel1.ToString();
-    //     highScoreText2.text = "Highscore Level 2: " + highScoreLevel2.ToString();
-    //     highScoreText3.text = "Highscore Level 3: " + highScoreLevel3.ToString();
-    //     highScoreText4.text = "Highscore Level 4: " + highScoreLevel4.ToString();
-    //     highScoreText5.text = "Highscore Level 5: " + highScoreLevel5.ToString();
-    // }
 
     // Highscore speichern, wenn der aktuelle Punktestand höher ist
     public static void SaveScore()

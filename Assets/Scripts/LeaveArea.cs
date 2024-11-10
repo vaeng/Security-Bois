@@ -48,17 +48,13 @@ public class LeaveArea : MonoBehaviour
             // decrease the number of guests in the level at the guestsInTheArea counter of the GameManager
             Object.FindFirstObjectByType<GameManager>().guestsInTheArea--;
 
-            ScoreManager.AddPoints();
-            ScoreManager.UpdateScoreText();
+            ScoreManager.AddPoints(10);
         }
     }
 
     // Coroutine to move the guest along a path and destroy it when it reaches the end
     IEnumerator MoveGuest(GameObject guest)
     {
-        ScoreManager.AddPoints(10);
-        ScoreManager.UpdateScoreText();
-        // scoreManager.UpdateHighScoreText();
         Debug.Log("Guest exited, +10 points");
 
         for (int i = 0; i < pathPoints.Length; i++)

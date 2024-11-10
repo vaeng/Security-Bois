@@ -83,8 +83,7 @@ public class GameManager : MonoBehaviour
 
         // Zeit herunterzählen
         secondsLeft -= Time.deltaTime;
-        // Zeit speichern in ScoreManager als "00:00" mit Minuten und Sekunden, je zwei Stellen
-        ScoreManager.timeLeftText = $"{(int)secondsLeft / 60:00}:{(int)secondsLeft % 60:00}";
+
 
         // Pause-Toggle
         if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Joystick1Button7))
@@ -101,6 +100,13 @@ public class GameManager : MonoBehaviour
             }
             isPaused = !isPaused;
         }
+    }
+
+    void FixedUpdate()
+    {
+        // Zeit speichern in ScoreManager als "00:00" mit Minuten und Sekunden, je zwei Stellen
+        ScoreManager.timeLeftText = $"{(int)secondsLeft / 60:00}:{(int)secondsLeft % 60:00}";
+        ScoreManager.UpdateScoreText();
     }
 
     public void PauseGame()
