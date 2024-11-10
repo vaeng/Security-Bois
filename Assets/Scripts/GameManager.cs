@@ -25,6 +25,8 @@ public class GameManager : MonoBehaviour
         }
 
         secondsLeft = totalTimeInSeconds;
+        // Set the current level in ScoreManager
+        ScoreManager.SetLevel();
     }
 
     void Update()
@@ -45,10 +47,16 @@ public class GameManager : MonoBehaviour
         // Gewonnenes Spiel
         if (guestsInTheArea <= 0)
         {
+            // add seconds left to score
             gameWon = true;
             Debug.Log("Game Won!");
             Debug.Log("Time left: " + secondsLeft);
-            SceneManager.LoadScene("winningScene");
+            if(ScoreManager.isHighScore())
+            {
+                SceneManager.LoadScene("winningHighscoreScene");
+            } else {
+                SceneManager.LoadScene("winningScene");
+            }
         }
 
         // Verlorenes Spiel
