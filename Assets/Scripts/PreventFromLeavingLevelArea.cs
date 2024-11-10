@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PreventFromLeavingLevelArea : MonoBehaviour
 {
-    public GameObject levelArea;
+    private GameObject levelArea;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
