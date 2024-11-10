@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         // Umschaltung des aktiven Spielers
-        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Joystick1Button1))
+        if (Input.GetKeyDown(KeyCode.Tab) || Input.GetKeyDown(KeyCode.Joystick1Button1))
         {
             players[activePlayerIndex].GetComponent<PlayerController>().enabled = false;
             players[activePlayerIndex].GetComponent<Animator>().SetBool("walk_b", false);

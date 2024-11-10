@@ -37,7 +37,7 @@ public class PlayerController : MonoBehaviour
 
         // if the player presses the space key or the joystick button 1 or the control key on the keyboard,
         // the player will shout and push the guests away
-        if (Input.GetKeyDown(KeyCode.Joystick1Button0) || Input.GetKeyDown(KeyCode.LeftControl))
+        if (Input.GetKeyDown(KeyCode.Joystick1Button0) || Input.GetKeyDown(KeyCode.Space))
         {
             GameObject[] guests = GameObject.FindGameObjectsWithTag("Guest");
             foreach (GameObject guest in guests)
