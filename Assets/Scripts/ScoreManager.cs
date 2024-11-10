@@ -86,12 +86,6 @@ public class ScoreManager : MonoBehaviour
         // LoadScore();               // Highscores laden
         UpdateScoreText();          // Aktuellen Punktestand anzeigenx
         // UpdateHighScoreText();      // Alle Highscores anzeigen
-        scoreText = GameObject.Find("Score").GetComponent<Text>();
-        if (scoreText == null)
-        {
-            Debug.LogError("Score Text not found in the scene.");
-        }
-
     }
 
     // Punkte zum aktuellen Score hinzufügen
@@ -111,7 +105,7 @@ public class ScoreManager : MonoBehaviour
     // Den aktuellen Punktestand anzeigen
     public static void UpdateScoreText()
     {
-        scoreText.text = "Your Score: " + currentScore.ToString();
+        scoreText.text = currentScore.ToString();
     }
 
     // Alle Highscore-Textfelder aktualisieren

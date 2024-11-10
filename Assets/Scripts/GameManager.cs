@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.SocialPlatforms.Impl;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -27,6 +29,12 @@ public class GameManager : MonoBehaviour
         secondsLeft = totalTimeInSeconds;
         // Set the current level in ScoreManager
         ScoreManager.SetLevel();
+        // find the object of name "Score" in the scene and assign it's Text component to the scoreText variable in ScoreManager
+        ScoreManager.scoreText  = GameObject.Find("Score").GetComponent<Text>();
+        if (ScoreManager.scoreText == null)
+        {
+            Debug.LogError("Score Text not found in the scene.");
+        }
     }
 
     void Update()
